@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Products } from 'src/app/models/products';
 import { ProductsService } from 'src/app/services/products.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -9,8 +11,8 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
-  products = [];
-  urlImage = "http://localhost:8080/ecommerce/backend/images/products/";
+  products: Products[] = [];
+  urlImage = `${environment.urlImage}`;
   prodSub: Subscription;
 
   constructor(private prodService: ProductsService) { }

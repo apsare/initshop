@@ -15,6 +15,8 @@ import { CartComponent } from './components/shop/cart/cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ModalAddToCartComponent } from './components/shop/modal-add-to-cart/modal-add-to-cart.component';
+import { ModalQuickViewComponent } from './components/shop/modal-quick-view/modal-quick-view.component';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -42,7 +44,9 @@ export const routes: Routes = [
     SingleProductComponent,
     CartComponent,
     NotFoundComponent,
-    ShopComponent
+    ShopComponent,
+    ModalAddToCartComponent,
+    ModalQuickViewComponent
   ],
   imports: [
     BrowserModule,

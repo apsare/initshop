@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   API: "http://localhost:8080/ecommerce/backend/api/",
   API_KEY: "adsffsdfds6b-6727-46f4-8bee-2c6ce6293e41",
+  urlImage: "http://localhost:8080/ecommerce/backend/images/products/",
 };
 
 /*
