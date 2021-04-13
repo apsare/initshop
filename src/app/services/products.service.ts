@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpResult } from '../models/http-result';
+import { Products } from '../models/products';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  products = [];
+  products: Products[] = [];
   prodSubject = new Subject<any[]>();
 
   constructor(private http: HttpClient) {
