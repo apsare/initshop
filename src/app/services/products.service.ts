@@ -10,9 +10,10 @@ import { Products } from '../models/products';
   providedIn: 'root'
 })
 export class ProductsService {
-
+  ProductsPerPage = 6;
   products: Products[] = [];
   prodSubject = new Subject<any[]>();
+
 
   constructor(private http: HttpClient) {
     this.getProductFromServer()
@@ -43,6 +44,15 @@ export class ProductsService {
       return product;
     }
     return null;
+  }
+
+  getProductByPage(numberPage: number): Products[]{
+    const numberOfPages = this.products.length / this.ProductsPerPage;
+    if(numberPage > 0 || numberPage < numberOfPages){
+      const prodResult = this.products.slice(numberPage*this.ProductsPerPage,(numberPage+1)*this.ProductsPerPage);
+      return prodResult;
+    }
+      return null
   }
 
 }
