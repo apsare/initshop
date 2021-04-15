@@ -25,7 +25,8 @@ export class UsersService {
   authentifier(newUser: Users){
     return new Promise(
       (resolve,reject) => {
-        const url = `${environment.API+ 'authentifier.php?'+ environment.API_KEY}` + '$email='+newUser.email + '&password=' +newUser.password;
+        const url = `${environment.API+ 'authentifier.php?'+ 'API_KEY='+ environment.API_KEY}` + '$email='+newUser.email + '&password=' +newUser.password;
+        console.log(url)
         this.http.get(url).subscribe(
           (result: HttpResult) => {
             if(result.status == 200){
@@ -34,13 +35,11 @@ export class UsersService {
               this.emitUser();
               resolve(result.result);
             } else {
-              console.log(result.message);
-              reject(false);
+              reject(result.message);
             }
           },
           (error) => {
-            console.log('Error:'+error);
-            reject(false);
+            reject(error);
           }
         )
       }
@@ -74,6 +73,12 @@ export class UsersService {
         )
       }
     )
+  }
+
+  logOut():void{
+    this.user = null;
+    this.isAuth = false;
+    this.userSubject = new Subject<Users>();
   }
 
 }
