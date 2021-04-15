@@ -19,6 +19,7 @@ import { ModalAddToCartComponent } from './components/shop/modal-add-to-cart/mod
 import { ModalQuickViewComponent } from './components/shop/modal-quick-view/modal-quick-view.component';
 import { CategoryComponent } from './components/shop/category/category.component';
 import { CategoryService } from './services/category.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -56,6 +57,7 @@ export const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
