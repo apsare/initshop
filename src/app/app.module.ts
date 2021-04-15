@@ -17,6 +17,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ModalAddToCartComponent } from './components/shop/modal-add-to-cart/modal-add-to-cart.component';
 import { ModalQuickViewComponent } from './components/shop/modal-quick-view/modal-quick-view.component';
+import { CategoryComponent } from './components/shop/category/category.component';
+import { CategoryService } from './services/category.service';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -24,6 +26,7 @@ export const routes: Routes = [
   {path: 'shop', component: ShopComponent},
   {path: 'single-product/:id', component: SingleProductComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'category/:id', component: CategoryComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'contact', component: ContactComponent},
@@ -46,7 +49,8 @@ export const routes: Routes = [
     NotFoundComponent,
     ShopComponent,
     ModalAddToCartComponent,
-    ModalQuickViewComponent
+    ModalQuickViewComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

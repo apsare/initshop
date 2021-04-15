@@ -112,7 +112,11 @@
             <li routerLinkActive="active">
               <a routerLink="/shop">Shop</a>
             </li>
-            <li routerLinkActive="active"><a>Categories</a></li>
+            <li routerLinkActive="active"><a>Categories</a>
+              <ul class="sub-menu">
+                <li *ngFor="let category of categories"><a [routerLink]="['/category',category.idCategory]">{{category.name}}</a></li>
+              </ul>
+            </li>
             <li routerLinkActive="active">
               <a routerLink="/contact">Contact</a>
             </li>
