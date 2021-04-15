@@ -19,7 +19,7 @@
   <!-- breadcrumb-section end -->
   <!-- product tab start -->
   <section class="whish-list-section theme1 pt-80 pb-80">
-      <div class="container">
+      <div class="container" *ngIf="cart.length > 0">
           <div class="row">
               <div class="col-12">
                   <h3 class="title mb-30 pb-25 text-capitalize">Your cart items</h3>
@@ -52,9 +52,9 @@
                                           <div class="count d-flex justify-content-center">
                                               <input type="text" [value]="data.number" disabled>
                                               <div class="button-group">
-                                                  <button class="count-btn increment"><i
+                                                  <button (click)="addProduct(data.product)" class="count-btn increment"><i
                                                     class="fas fa-chevron-up"></i></button>
-                                                  <button class="count-btn decrement"><i
+                                                  <button (click)="deleteProduct(data.product)" class="count-btn decrement"><i
                                                     class="fas fa-chevron-down"></i></button>
                                               </div>
                                           </div>
@@ -80,7 +80,7 @@
               </div>
           </div>
       </div>
-      <div class="container">
+      <div class="container" *ngIf="cart.length == 0">
           <h3 class="title mb-30 pb-25 text-capitalize">Your cart is empty</h3>
           <a routerLink="/shop" class="btn btn-block theme-btn--dark1 btn--lg mt-70">Go back to shop</a>
       </div>

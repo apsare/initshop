@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
+import { Products } from 'src/app/models/products';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +18,14 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartService.cart;
+  }
+
+  addProduct(product: Products): void{
+    this.cartService.addProductToCart(product);
+  }
+
+  deleteProduct(product: Products): void{
+    this.cartService.deleteFromCart(product);
   }
 
 }
