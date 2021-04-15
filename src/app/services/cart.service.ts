@@ -6,13 +6,25 @@ import { Products } from '../models/products';
   providedIn: 'root'
 })
 export class CartService {
-  cart: Cart[] = [];
+  cart: Cart[];
   cartData = {len:0, cost:0};
 
   constructor() {
-    //this.cartData = {len:0, cost:0};
+    this.initCart();
   }
 
+
+  initCart():void{
+    if(typeof(localStorage) !== "undefined"){
+      const cart = JSON.parse(localStorage.getItem('cart'));
+      const cartData = JSON.parse(localStorage.getItem('cartData'));
+      this.cart = cart ? cart : [];
+      this.cartData = cartData ? cartData : {len:0, cost:0};
+    } else {
+      this.cart = [];
+      this.cartData = {len:0, cost:0};
+    }
+  }
 
   updateDataCart(){
     let len = 0;
@@ -23,6 +35,11 @@ export class CartService {
     });
     this.cartData.len = len;
     this.cartData.cost = cost;
+     // estce que le navigateur supporte le stockage local ?
+    if(typeof(localStorage) !== "undefined"){
+      localStorage.setItem('cart',JSON.stringify(this.cart));
+      localStorage.setItem('cartData',JSON.stringify(this.cartData));
+    }
   }
 
 
@@ -42,7 +59,7 @@ export class CartService {
 
   deleteFromCart(productToDelete: Products): void{
     const indexProduct = this.cart.findIndex(element => element.product == productToDelete);
-    if(indexProduct){
+    if(indexProduct !== -1){
       if(this.cart[indexProduct].number > 1){
         this.cart[indexProduct].number--;
       } else {
