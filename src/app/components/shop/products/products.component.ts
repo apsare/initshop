@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Products } from 'src/app/models/products';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,9 +10,10 @@ import { environment } from 'src/environments/environment';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
 
-  products: Products[] = [];
+  @Input() products: Products[] = [];
+  @Input() isPaginate: boolean = true;
   urlImage = `${environment.urlImage}`;
   prodSub: Subscription;
   currentPage = 0;
@@ -21,13 +22,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(private prodService: ProductsService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.prodSub = this.prodService.prodSubject.subscribe(
-      (data) => {
-       // this.products = data;
-       this.products = this.prodService.getProductByPage(this.currentPage);
-      }
-    )
-    this.prodService.emitProduct()
+
   }
 
   addToCart(product:Products):void{
@@ -62,8 +57,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.currentPage = newCurrentPage;
     }
   }
-  ngOnDestroy(): void {
-    this.prodSub.unsubscribe()
-  }
+
 
 }

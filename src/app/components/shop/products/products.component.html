@@ -1,6 +1,6 @@
 <div class="tab-content container" id="pills-tabContent">
   <nav aria-label="Page navigation ecommerce">
-    <ul class="pagination">
+    <ul class="pagination" *ngIf="isPaginate == true">
         <li class="page-item" (click)="prevPage()">
             <a class="page-link" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>

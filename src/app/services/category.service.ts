@@ -12,12 +12,21 @@ export class CategoryService {
   categories: Category[];
   categorySubject = new Subject<Category[]>();
 
+
   constructor(private http: HttpClient) {
     this.getCategoriesFromServer();
   }
 
   emitCategories():void{
     this.categorySubject.next(this.categories);
+  }
+
+  getCategoryById(id: number): Category{
+    const categ = this.categories.find(element => element.idCategory == id);
+    if (categ){
+      return categ;
+    }
+    return null;
   }
 
   getCategoriesFromServer():void{
