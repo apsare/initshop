@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { element } from 'protractor';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpResult } from '../models/http-result';
@@ -34,6 +35,14 @@ export class ProductsService {
 
       }
     )
+  }
+
+  getProductById(id: number): Products{
+    const product = this.products.find(element => element.idProduct == id);
+    if (product){
+      return product;
+    }
+    return null;
   }
 
 }
