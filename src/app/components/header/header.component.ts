@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartService.cart;
-    console.log("cartdata = "+this.cartService.cartData);
     this.cartData = this.cartService.cartData;
     this.categoriesSub = this.categoryService.categorySubject.subscribe(
       (data: Category[]) => {
