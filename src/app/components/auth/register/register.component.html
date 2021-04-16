@@ -26,6 +26,7 @@
               <div class="log-in-form">
                   <form class="personal-information" [formGroup]="registerForm">
                     <div class="alert alert-danger text-center" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+                    <div class="alert alert-success text-center" role="alert" *ngIf="successMessage">{{successMessage}}</div>
                       <div class="order-asguest theme1 mb-3">
                           <span>Already have an account?</span>
                           <a class="text-muted hover-color" routerLink="/login">Log in instead!</a>

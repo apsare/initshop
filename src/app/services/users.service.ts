@@ -25,7 +25,7 @@ export class UsersService {
   authentifier(newUser: Users){
     return new Promise(
       (resolve,reject) => {
-        const url = `${environment.API+ 'authentifier.php?'+ 'API_KEY='+ environment.API_KEY}` + '$email='+newUser.email + '&password=' +newUser.password;
+        const url = `${environment.API+ 'authentifier.php?API_KEY='+ environment.API_KEY+ '&email='+newUser.email + '&password=' +newUser.password}` ;
         console.log(url)
         this.http.get(url).subscribe(
           (result: HttpResult) => {
@@ -49,19 +49,20 @@ export class UsersService {
   createUser(newUser: Users){
     return new Promise(
       (resolve,reject) => {
-        const url = `${environment.API+ 'createUsers.php?'+ environment.API_KEY}`
-        + '$email='+newUser.email
+        const url = `${environment.API+ 'createUsers.php?API_KEY='+ environment.API_KEY}`
+        + '&email='+newUser.email
         + '&password=' +newUser.password
-        + '$sexe='+newUser.sexe
+        + '&sexe='+newUser.sexe
         + '&firstname=' +newUser.firstname
         + '&lastname=' +newUser.lastname
-        + '$datBirthe='+newUser.dateBirth
+        + '&dateBirth='+newUser.dateBirth
         + '&pseudo=' +newUser.pseudo;
-
         this.http.get(url).subscribe(
           (data: HttpResult) => {
               if(data.status == 200) {
-                  this.authentifier(newUser);
+                this.user = data.result;
+                this.isAuth = true;
+                this.emitUser();
                   resolve(data.result);
               } else {
                 reject(data.message);

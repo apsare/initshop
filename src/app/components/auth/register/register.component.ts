@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
 registerForm: FormGroup;
 errorMessage: string;
+successMessage: string;
 
   constructor(private fb: FormBuilder,
               private userService: UsersService,
@@ -56,9 +57,17 @@ errorMessage: string;
       dateBirth: dateBirth,
     };
 
+    console.log(newUser);
+
     this.userService.createUser(newUser)
     .then((data) => {
+      this.errorMessage = null
+      this.successMessage = "Votre compte a bien été créé, vous allez être redirigé.";
+      setTimeout(() => {
+        this.successMessage = null
         this.router.navigate(['/shop']);
+      },2000);
+
     })
     .catch((error) => {
       this.errorMessage = error;

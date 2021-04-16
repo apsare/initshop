@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ShopComponent implements OnInit, OnDestroy {
 
   products = [];
+
   prodSub: Subscription;
 
   constructor(private prodService: ProductsService) { }
