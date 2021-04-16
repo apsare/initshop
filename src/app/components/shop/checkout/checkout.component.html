@@ -28,14 +28,13 @@
                           <li>Frais de livraison</li>
                           <hr>
                           <li>{{cartData.len}}</li>
-
                       </ul>
 
                       <ul class="amount">
                           <li *ngFor="let data of cart">{{(data.number * data.product.price).toFixed(2)}} €</li>
                           <li>0 €</li>
                           <hr>
-                          <li>{{(cartData.cost.toFixed)}} €</li>
+                          <li>{{(cartData.cost).toFixed(2)}} €</li>
 
                       </ul>
                   </li>
