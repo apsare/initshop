@@ -60,7 +60,7 @@ export class UsersService {
         this.http.get(url).subscribe(
           (data: HttpResult) => {
               if(data.status == 200) {
-                this.user = data.result;
+                this.user = data.args;
                 this.isAuth = true;
                 this.emitUser();
                   resolve(data.result);

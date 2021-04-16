@@ -20,6 +20,8 @@ import { ModalQuickViewComponent } from './components/shop/modal-quick-view/moda
 import { CategoryComponent } from './components/shop/category/category.component';
 import { CategoryService } from './services/category.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
+import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -31,6 +33,7 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'checkout', canActivate:[AuthGuard], component: CheckoutComponent},
   {path: 'notFound', component: NotFoundComponent},
   {path: '**', redirectTo: 'notFound',pathMatch: 'full'},
 ]
@@ -51,7 +54,8 @@ export const routes: Routes = [
     ShopComponent,
     ModalAddToCartComponent,
     ModalQuickViewComponent,
-    CategoryComponent
+    CategoryComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

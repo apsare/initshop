@@ -3,4 +3,5 @@ export interface HttpResult {
   message: string;
   result;
   time: string;
+  args;
 }
