@@ -124,7 +124,7 @@
             <li routerLinkActive="active" *ngIf="!isAuth">
               <a routerLink="/register">Register</a>
             </li>
-            <li routerLinkActive="active" *ngIf="isAuth" (click)="logOut()">
+            <li (click)="logOut()" routerLinkActive="active" *ngIf="isAuth" >
               <a>Logout</a>
             </li>
           </ul>
