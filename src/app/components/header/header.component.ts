@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/models/cart';
 import { Category } from 'src/app/models/category';
@@ -18,7 +18,11 @@ export class HeaderComponent implements OnInit {
   cartData;
   categories: Category[];
   categoriesSub: Subscription;
-  isAuth: boolean = false;
+  //isAuth: boolean = false;
+
+  get isAuth():boolean{
+    return this.userService.isAuth;
+  }
 
   constructor(private cartService: CartService,
               private categoryService: CategoryService,
@@ -28,7 +32,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cart = this.cartService.cart;
     this.cartData = this.cartService.cartData;
-    this.isAuth = this.userService.isAuth;
     this.categoriesSub = this.categoryService.categorySubject.subscribe(
       (data: Category[]) => {
         this.categories = data;
@@ -38,8 +41,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut():void{
+    console.log("avant="+this.isAuth);
     this.userService.logOut();
-    this.isAuth = this.userService.isAuth;
   }
 
 }

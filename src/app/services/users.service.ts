@@ -76,6 +76,8 @@ export class UsersService {
     )
   }
 
+
+
   logOut():void{
     this.user = null;
     this.isAuth = false;
