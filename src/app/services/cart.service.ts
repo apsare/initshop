@@ -69,4 +69,9 @@ export class CartService {
     }
   }
 
+  removeElementOfCart(index: number): void{
+    this.cart.splice(index,1);
+    this.updateDataCart();
+  }
+
 }

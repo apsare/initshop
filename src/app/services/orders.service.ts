@@ -31,10 +31,19 @@ export class OrdersService {
 
         this.http.get(url).subscribe(
           (response: HttpResult) => {
-
+            if (response.status == 200) {
+                //la commande s'est passée correctement
+                //On supprime du panier
+                this.cartService.removeElementOfCart(0);
+                if(cart.length == 0){
+                  resolve(true);
+                }
+            } else {
+              reject(response.message)
+            }
           },
           (error) => {
-            reject("Error :")
+            reject("Error :"+ error)
           }
         )
 
