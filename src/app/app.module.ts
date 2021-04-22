@@ -22,6 +22,7 @@ import { CategoryService } from './services/category.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 import { AuthGuard } from './services/auth.guard';
+import { ButtonPaypalComponent } from './components/shop/button-paypal/button-paypal.component';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -55,7 +56,8 @@ export const routes: Routes = [
     ModalAddToCartComponent,
     ModalQuickViewComponent,
     CategoryComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ButtonPaypalComponent
   ],
   imports: [
     BrowserModule,

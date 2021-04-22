@@ -25,4 +25,19 @@ cartData;
   ngOnInit(): void {
   }
 
+  createOrders(){
+    const user = this.userService.user;
+    const cart = this.cartService.cart;
+
+    this.OrdersService.createOrder(user,cart)
+    .then(() => {
+      console.log("commande créee avec succès !")
+    })
+    .catch(
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
 }
