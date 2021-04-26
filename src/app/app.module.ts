@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 import { AuthGuard } from './services/auth.guard';
 import { ButtonPaypalComponent } from './components/shop/button-paypal/button-paypal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export const routes: Routes = [
   {path: '', component: ShopComponent},
@@ -64,6 +65,7 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPayPalModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
